@@ -200,10 +200,8 @@ def vici(ndvi,lower,upper):
 
     return(vici_value)
 
-def calculate_VICI(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,output_folder,bbox,all_dates,onlyCropland = False, processMasks = False):
+def calculate_VICI(date,lower_threshold,upper_threshold,VICI_folder,all_dates):
 
-    with rasterio.open(CPSZ_file,'r') as src:
-        cpsz = src.read(1)
     
     cluster_folder = Path(VICI_folder).parent
 
@@ -213,10 +211,6 @@ def calculate_VICI(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     upper_folder = os.path.join(cluster_folder,"percentiles",upper_threshold)
     
     year,month,day = date.split('-')
-    
-    dekad = f"{month}-{day}"
-
-    cropland_mask = os.path.join(output_folder,"landcover","cropland","WorldCover_merged.tif")
 
     lower_file = os.path.join(lower_folder,f"ndvi{lower_threshold[-2:]}_{month}{day}.tif")
     upper_file = os.path.join(upper_folder,f"ndvi{upper_threshold[-2:]}_{month}{day}.tif")
@@ -237,13 +231,6 @@ def calculate_VICI(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     vici_raster[ndvi > 250]=np.nan # missing NDVI values
     vici_raster[lower==253]=np.nan # out of season
     
-    """if onlyCropland:
-        with rasterio.open(cropland_mask) as src:
-            c_mask = src.read(1)
-        vici_raster[c_mask==0]=254 # out of cropland"""
-        
-    #vici_raster[cpsz==0]= np.nan # out of CPSZ
-    #vici_raster[c_mask==0]=np.nan
     vici_raster = vici_raster.astype(np.float32)
     
     vici_file = os.path.join(VICI_folder,f"VICI-{year}-{month}-{day}.tif")
@@ -254,11 +241,8 @@ def calculate_VICI(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     with rasterio.open(vici_file,"w",**profile) as dst:
         dst.write(vici_raster,1)
 
-def calculate_SWIA(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,output_folder,bbox,all_dates):
+def calculate_SWIA(date,lower_threshold,upper_threshold,VICI_folder,all_dates):
 
-    with rasterio.open(CPSZ_file,'r') as src:
-        cpsz = src.read(1)
-    
     cluster_folder = Path(VICI_folder).parent
 
     ndvi_file = os.path.join(cluster_folder,"Adj_SWI_stack.tif")
@@ -267,10 +251,6 @@ def calculate_SWIA(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     upper_folder = os.path.join(cluster_folder,"percentiles_swia",upper_threshold)
     
     year,month,day = date.split('-')
-    
-    dekad = f"{month}-{day}"
-
-    cropland_mask = os.path.join(output_folder,"landcover","cropland","WorldCover_merged.tif")
 
     lower_file = os.path.join(lower_folder,f"ndvi{lower_threshold[-2:]}_{month}{day}.tif")
     upper_file = os.path.join(upper_folder,f"ndvi{upper_threshold[-2:]}_{month}{day}.tif")
@@ -289,11 +269,7 @@ def calculate_SWIA(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     vici_raster[np.isnan(lower)]=np.nan
     vici_raster[lower==255]=np.nan
     vici_raster[ndvi > 250]=np.nan # missing NDVI values
-    #vici_raster[lower==253]=np.nan # out of season
 
-        
-    #vici_raster[cpsz==0]= np.nan # out of CPSZ
-    #vici_raster[c_mask==0]=np.nan
     vici_raster = vici_raster.astype(np.float32)
     
     vici_file = os.path.join(VICI_folder,f"SWIA-{year}-{month}-{day}.tif")
@@ -304,62 +280,7 @@ def calculate_SWIA(CPSZ_file,date,lower_threshold,upper_threshold,VICI_folder,ou
     with rasterio.open(vici_file,"w",**profile) as dst:
         dst.write(vici_raster,1)
         
-def calculate_VICI_old(date,lower_threshold,upper_threshold,VICI_folder,output_folder,bbox,onlyCropland = True, processMasks = False):
-    
-    cluster_folder = Path(VICI_folder).parent
-    cropped_country = os.path.join(output_folder,"invalid_pixel")
-    season_folder = os.path.join(cluster_folder,"season_masks")
-    lower_folder = os.path.join(cluster_folder,"cluster_stats",lower_threshold)
-    upper_folder = os.path.join(cluster_folder,"cluster_stats",upper_threshold)
-    
-    year,month,day = date.split('-')
-    
-    dekad = f"{month}-{day}"
-    
-    ndvi_file = os.path.join(cropped_country,str(year),f"ndvi_upper_envelope_{year}-{month}-{day}_Mali.tif")
-    cropland_mask = os.path.join(output_folder,"landcover","cropland","WorldCover_merged.tif")
-    season_mask = os.path.join(season_folder,f"season-{month}-{day}.tif")
-    lower_file = os.path.join(lower_folder,f"ndvi_{lower_threshold}-{month}-{day}.tif")
-    upper_file = os.path.join(upper_folder,f"ndvi_{upper_threshold}-{month}-{day}.tif")
-    
-    with rasterio.open(ndvi_file) as src:
-        ndvi = src.read()
-        profile = src.profile
-        
-        template_dict = {
-            "width":src.width,
-            "height":src.height,
-            "crs":src.crs,
-            "transform":src.transform,
-            "extent":src.bounds,
-            "resolution":src.res,
-            'dtype':profile["dtype"]
-        }
-        
-    with rasterio.open(season_mask) as src:
-        s_mask = src.read()
 
-    with rasterio.open(cropland_mask) as src:
-        c_mask = src.read()
-    
-    with rasterio.open(lower_file) as src:
-        lower = src.read()
-        
-    with rasterio.open(upper_file) as src:
-        upper = src.read()
-
-    vici_raster = vici(ndvi,lower)
-    vici_raster[np.isnan(s_mask)]=np.nan
-    vici_raster[s_mask==0]=np.nan
-    #vici_raster[c_mask==0]=np.nan
-    vici_raster = vici_raster.astype(np.float32)
-    
-    vici_file = os.path.join(VICI_folder,f"VICI-{year}-{month}-{day}.tif")
-    profile.pop("nodata", None)
-    profile["nodata"] = np.nan
-    profile["dtype"]=np.float32
-    with rasterio.open(vici_file,"w",**profile) as dst:
-        dst.write(vici_raster)
 
 
     
