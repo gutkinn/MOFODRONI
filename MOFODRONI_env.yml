@@ -219,4 +219,7 @@ dependencies:
   - zstd=1.5.6
   - scikit-learn
   - scikit-image
+  - geopandas
+  - matplotlib
+  - xarray
 prefix: /home/eoafrica/.conda/envs/MOFODRONI
