@@ -1,0 +1,62 @@
+                      OLS Regression Results                     
+Dep. Variable:   ,yield           ,  R-squared:         ,   0.473
+Model:           ,OLS             ,  Adj. R-squared:    ,   0.107
+Method:          ,Least Squares   ,  F-statistic:       ,   1.293
+Date:            ,Thu, 23 Apr 2026,  Prob (F-statistic):, 0.202  
+Time:            ,12:28:18        ,  Log-Likelihood:    , -126.42
+No. Observations:,    84          ,  AIC:               ,   322.8
+Df Residuals:    ,    49          ,  BIC:               ,   407.9
+Df Model:        ,    34          ,                     ,        
+Covariance Type: ,nonrobust       ,                     ,        
+              ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+SPI1_max      ,    6.5841,    3.088,    2.132, 0.038,    0.378,   12.790
+SPI3_max      ,  -12.3380,    7.831,   -1.575, 0.122,  -28.076,    3.400
+SPI6_max      ,    7.1778,    7.343,    0.978, 0.333,   -7.578,   21.934
+SPI12_max     ,   -3.4813,    6.233,   -0.559, 0.579,  -16.007,    9.045
+SPEI1_max     ,  -15.4139,    6.754,   -2.282, 0.027,  -28.987,   -1.841
+SPEI3_max     ,   14.2387,   10.832,    1.314, 0.195,   -7.530,   36.007
+SPEI6_max     ,  -14.8643,   11.204,   -1.327, 0.191,  -37.379,    7.650
+SPEI12_max    ,    7.5945,    6.835,    1.111, 0.272,   -6.141,   21.330
+SPI1_median   ,   -0.8241,    3.129,   -0.263, 0.793,   -7.112,    5.464
+SPI3_median   ,   17.2906,   11.031,    1.567, 0.123,   -4.877,   39.458
+SPI6_median   ,   -5.5727,    7.469,   -0.746, 0.459,  -20.583,    9.437
+SPI12_median  ,    2.2738,    1.387,    1.640, 0.107,   -0.513,    5.061
+SPEI1_median  ,    5.6986,    3.887,    1.466, 0.149,   -2.113,   13.510
+SPEI3_median  ,  -28.4740,   16.066,   -1.772, 0.083,  -60.761,    3.813
+SPEI6_median  ,   17.8632,    7.754,    2.304, 0.026,    2.282,   33.444
+SPEI12_median ,   -2.3743,    6.225,   -0.381, 0.705,  -14.884,   10.136
+SPI1_min      ,   -5.9459,    2.330,   -2.552, 0.014,  -10.629,   -1.263
+SPI3_min      ,    1.7334,    4.428,    0.391, 0.697,   -7.165,   10.631
+SPI6_min      ,   -1.7306,    5.232,   -0.331, 0.742,  -12.244,    8.783
+SPI12_min     ,   -2.4489,    2.610,   -0.938, 0.353,   -7.695,    2.797
+SPEI1_min     ,   15.4802,    6.126,    2.527, 0.015,    3.170,   27.790
+SPEI3_min     ,   -5.0141,   15.696,   -0.319, 0.751,  -36.556,   26.528
+SPEI6_min     ,    6.6992,    6.294,    1.064, 0.292,   -5.950,   19.348
+SPEI12_min    ,   -5.1533,    5.578,   -0.924, 0.360,  -16.363,    6.057
+SPI1_std      ,  -15.7319,    8.029,   -1.959, 0.056,  -31.867,    0.403
+SPI3_std      ,    2.4981,    9.658,    0.259, 0.797,  -16.910,   21.907
+SPI6_std      ,   -4.5939,   11.703,   -0.393, 0.696,  -28.113,   18.925
+SPI12_std     ,   -4.5642,    5.785,   -0.789, 0.434,  -16.190,    7.062
+SPEI1_std     ,   35.4415,   15.878,    2.232, 0.030,    3.533,   67.350
+SPEI3_std     ,  -11.1100,   32.686,   -0.340, 0.735,  -76.794,   54.574
+SPEI6_std     ,   30.0820,   14.697,    2.047, 0.046,    0.547,   59.617
+SPEI12_std    ,  -11.7710,    7.968,   -1.477, 0.146,  -27.783,    4.241
+VICI_veg_max  ,    0.0265,    0.164,    0.162, 0.872,   -0.302,    0.355
+VICI_veg_mean ,   -0.0424,    0.119,   -0.357, 0.723,   -0.281,    0.196
+VICI_veg_min  ,   -0.0061,    0.311,   -0.020, 0.984,   -0.632,    0.620
+VICI_veg_std  ,   -0.0493,    0.451,   -0.109, 0.913,   -0.955,    0.856
+VICI_veg_count,    0.2215,    0.628,    0.353, 0.726,   -1.041,    1.484
+VICI_mat_max  ,         0,        0,      nan,   nan,        0,        0
+VICI_mat_mean ,         0,        0,      nan,   nan,        0,        0
+VICI_mat_min  ,         0,        0,      nan,   nan,        0,        0
+VICI_mat_std  ,         0,        0,      nan,   nan,        0,        0
+VICI_mat_count,         0,        0,      nan,   nan,        0,        0
+Omnibus:      ,29.344,  Durbin-Watson:     ,   2.195
+Prob(Omnibus):, 0.000,  Jarque-Bera (JB):  , 122.081
+Skew:         , 0.927,  Prob(JB):          ,3.09e-27
+Kurtosis:     , 8.607,  Cond. No.          ,1.19e+16
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 3.67e-28. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

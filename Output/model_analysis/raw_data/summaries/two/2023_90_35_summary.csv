@@ -1,0 +1,41 @@
+                          OLS Regression Results                          
+Dep. Variable:   ,yield           ,  R-squared (uncentered):     ,   0.117
+Model:           ,OLS             ,  Adj. R-squared (uncentered):,  -0.141
+Method:          ,Least Squares   ,  F-statistic:                ,  0.4553
+Date:            ,Fri, 24 Apr 2026,  Prob (F-statistic):         , 0.971  
+Time:            ,12:01:20        ,  Log-Likelihood:             , -148.11
+No. Observations:,    84          ,  AIC:                        ,   334.2
+Df Residuals:    ,    65          ,  BIC:                        ,   380.4
+Df Model:        ,    19          ,                              ,        
+Covariance Type: ,nonrobust       ,                              ,        
+              ,   coef   , std err ,    t    ,P>|t| ,  [0.025 ,  0.975] 
+SWIA_veg_max  ,   -0.5428,    0.745,   -0.728, 0.469,   -2.032,    0.946
+VICI_veg_max  ,    0.4298,    0.772,    0.557, 0.580,   -1.112,    1.972
+SWIA_veg_mean ,    0.2883,    0.411,    0.702, 0.485,   -0.532,    1.109
+VICI_veg_mean ,    0.4937,    0.758,    0.651, 0.517,   -1.020,    2.007
+SWIA_veg_min  ,    0.3339,    0.712,    0.469, 0.641,   -1.088,    1.755
+VICI_veg_min  ,   -0.8396,    1.173,   -0.716, 0.477,   -3.181,    1.502
+SWIA_veg_std  ,    1.1969,    1.783,    0.671, 0.504,   -2.363,    4.757
+VICI_veg_std  ,   -1.4387,    2.227,   -0.646, 0.521,   -5.887,    3.009
+SWIA_veg_count,   -0.3206,    2.662,   -0.120, 0.905,   -5.636,    4.995
+VICI_veg_count,   -2.4412,    3.578,   -0.682, 0.497,   -9.587,    4.704
+SWIA_mat_max  ,   -0.7811,    0.955,   -0.818, 0.417,   -2.689,    1.127
+VICI_mat_max  ,   -0.7235,    3.013,   -0.240, 0.811,   -6.741,    5.294
+SWIA_mat_mean ,    0.0403,    0.123,    0.328, 0.744,   -0.205,    0.285
+VICI_mat_mean ,   -0.5624,    0.753,   -0.747, 0.458,   -2.067,    0.942
+SWIA_mat_min  ,    0.1126,    0.149,    0.757, 0.452,   -0.185,    0.410
+VICI_mat_min  ,-1.495e-14, 3.64e-14,   -0.410, 0.683,-8.77e-14, 5.78e-14
+SWIA_mat_std  ,    0.0880,    0.353,    0.249, 0.804,   -0.617,    0.794
+VICI_mat_std  ,    2.6665,    8.951,    0.298, 0.767,  -15.211,   20.544
+SWIA_mat_count,    6.5643,    7.998,    0.821, 0.415,   -9.408,   22.537
+VICI_mat_count,    1.5750,    4.054,    0.389, 0.699,   -6.521,    9.671
+Omnibus:      ,34.209,  Durbin-Watson:     ,   2.206
+Prob(Omnibus):, 0.000,  Jarque-Bera (JB):  ,  88.513
+Skew:         , 1.369,  Prob(JB):          ,6.02e-20
+Kurtosis:     , 7.218,  Cond. No.          ,2.40e+19
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[3] The smallest eigenvalue is 1.87e-33. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
