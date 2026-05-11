@@ -222,4 +222,7 @@ dependencies:
   - geopandas
   - matplotlib
   - xarray
+  - seaborn
+  - cmocean
+  - statsmodels
 prefix: /home/eoafrica/.conda/envs/MOFODRONI
